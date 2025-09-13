@@ -1,0 +1,27 @@
+from fastapi import FastAPI
+from pydantic import BaseModel
+import sqlite3
+
+app = FastAPI()
+
+# Request schema
+class Query(BaseModel):
+    user_id: str
+    query: str
+
+# Simple campus DB query function
+def get_library_hours():
+    # Example: fetch from DB
+    return "The library is open from 8 AM to 8 PM."
+
+@app.post("/chat")
+def chat(query: Query):
+    user_query = query.query.lower()
+
+    if "library" in user_query and "hours" in user_query:
+        answer = get_library_hours()
+    else:
+        # AI fallback (can connect to HuggingFace or OpenAI)
+        answer = "I'm not sure, let me connect you to admin."
+
+    return {"response": answer}
