@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Smart Campus Assistant</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to right, #e0f2fe, #c7d2fe);
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    header, footer {
+      background: #4338ca;
+      color: white;
+      text-align: center;
+      padding: 12px;
+      font-weight: bold;
+    }
+    .chat-container {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 16px;
+    }
+    .chat-box {
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      width: 100%;
+      max-width: 600px;
+      display: flex;
+      flex-direction: column;
+      padding: 16px;
+    }
+    .messages {
+      flex: 1;
+      overflow-y: auto;
+      padding: 8px;=
+      margin-bottom: 12px;
+    }
+    .bubble {
+      display: inline-block;
+      padding: 10px 14px;
+      border-radius: 16px;
+      margin: 6px 0;
+      max-width: 80%;
+      word-wrap: break-word;
+    }
+    .user {
+      background: #4338ca;
+      color: white;
+      align-self: flex-end;
+      border-bottom-right-radius: 0;
+    }
+    .bot {
+      background: #e5e7eb;
+      color: #111827;
+      align-self: flex-start;
+      border-bottom-left-radius: 0;
+    }
+    .input-area {
+      display: flex;
+    }
+    .input-area input {
+      flex: 1;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 12px 0 0 12px;
+      outline: none;
+    }
+    .input-area button {
+      background: #4338ca;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 0 12px 12px 0;
+      cursor: pointer;
+    }
+    .quick-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .quick-actions button {
+      background: #c7d2fe;
+      color: #4338ca;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <header>🏫 Smart Campus Assistant</header>
+
+  <div class="chat-container">
+    <div class="chat-box">
+      <div class="messages" id="messages">
+        <div class="bubble bot">Hello 👋! Ask me about schedules, dining, library, or facilities.</div>
+      </div>
+
+      <div class="quick-actions">
+        <button onclick="setQuick('Show today’s schedule')">Show today’s schedule</button>
+        <button onclick="setQuick('What’s for lunch?')">What’s for lunch?</button>
+        <button onclick="setQuick('Library opening hours')">Library opening hours</button>
+        <button onclick="setQuick('How to pay fees?')">How to pay fees?</button>
+      </div>
+
+      <div class="input-area">
+        <input id="userInput" type="text" placeholder="Ask something about your campus..." />
+        <button onclick="sendMessage()">➤</button>
+      </div>
+    </div>
+  </div>
+
+  <footer>© 2025 Smart Campus Hackathon</footer>
+
+  <script>
+    const messagesDiv = document.getElementById("messages");
+
+    function addMessage(text, sender) {
+      const div = document.createElement("div");
+      div.className = "bubble " + sender;
+      div.innerText = text;
+      messagesDiv.appendChild(div);
+      messagesDiv.scrollTop = messagesDiv.scrollHeight;
+    }
+
+    function sendMessage() {
+      const input = document.getElementById("userInput");
+      const text = input.value.trim();
+      if (!text) return;
+
+      addMessage(text, "user");=
+      input.value = "";
+
+      // TODO: Replace with backend API call
+      setTimeout(() => {
+        addMessage(You asked: "${text}" — I'll fetch that info soon!, "bot");
+      }, 500);
+    }
+
+    function setQuick(text) {
+      document.getElementById("userInput").value = text;
+    }
+  </script>
+</body>
+</html>
+    
+      
+
+        
+
+
+</body>
+</html> 
